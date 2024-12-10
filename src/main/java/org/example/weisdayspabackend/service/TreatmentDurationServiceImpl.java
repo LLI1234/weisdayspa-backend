@@ -1,6 +1,5 @@
 package org.example.weisdayspabackend.service;
 
-import org.example.weisdayspabackend.entity.Treatment;
 import org.example.weisdayspabackend.entity.TreatmentDuration;
 import org.example.weisdayspabackend.repository.TreatmentDurationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,27 +9,27 @@ import java.util.List;
 @Service
 public class TreatmentDurationServiceImpl implements TreatmentDurationService{
 
-    private final TreatmentDurationRepository durationRepository;
+    private final TreatmentDurationRepository duration_repository;
 
     @Autowired
     public TreatmentDurationServiceImpl(TreatmentDurationRepository treatmentDurationRepository) {
-        this.durationRepository = treatmentDurationRepository;
+        this.duration_repository = treatmentDurationRepository;
     }
 
     @Override
     public TreatmentDuration createDuration(TreatmentDuration duration) {
-        return durationRepository.save(duration);
+        return duration_repository.save(duration);
     }
 
     @Override
-    public List<TreatmentDuration> getDurationsByTreatment(Long treatment_id) {
-        return durationRepository.findByTreatmentId(treatment_id);
+    public List<TreatmentDuration> getDurationsByTreatment(Long treatmentId) {
+        return duration_repository.findByTreatment_TreatmentId(treatmentId);
     }
 
     @Override
-    public TreatmentDuration updateDuration(Long duration_id, TreatmentDuration updated_duration) {
-        TreatmentDuration existing_duration = durationRepository.findById(duration_id)
-                .orElseThrow(() -> new RuntimeException("Duration with ID " + duration_id + " not found"));
+    public TreatmentDuration updateDuration(Long durationId, TreatmentDuration updated_duration) {
+        TreatmentDuration existing_duration = duration_repository.findById(durationId)
+                .orElseThrow(() -> new RuntimeException("Duration with ID " + durationId + " not found"));
         if(updated_duration.getDuration() != null) {
             existing_duration.setDuration(updated_duration.getDuration());
         }
@@ -38,14 +37,14 @@ public class TreatmentDurationServiceImpl implements TreatmentDurationService{
             existing_duration.setPrice(updated_duration.getPrice());
         }
 
-        return durationRepository.save(existing_duration);
+        return duration_repository.save(existing_duration);
     }
 
     @Override
-    public void deleteDuration(Long duration_id) {
-        if(!durationRepository.existsById(duration_id)) {
-            throw new RuntimeException("Duration with ID " + duration_id + " not found");
+    public void deleteDuration(Long durationId) {
+        if(!duration_repository.existsById(durationId)) {
+            throw new RuntimeException("Duration with ID " + durationId + " not found");
         }
-        durationRepository.deleteById(duration_id);
+        duration_repository.deleteById(durationId);
     }
 }

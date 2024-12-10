@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface TreatmentDurationRepository extends JpaRepository<TreatmentDuration, Long> {
-    List<TreatmentDuration> findByTreatmentId(Long treatmentId);
+    List<TreatmentDuration> findByTreatment_TreatmentId(Long treatmentId);
 }
