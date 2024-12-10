@@ -24,50 +24,44 @@ public class TreatmentServiceImpl implements TreatmentService {
     }
 
     @Override
-    public Optional<Treatment> getTreatment(Long treatment_id) {
-        return treatmentRepository.findById(treatment_id);
+    public Optional<Treatment> getTreatment(Long treatmentId) {
+        return treatmentRepository.findById(treatmentId);
     }
 
     @Override
     public List<Treatment> getAllTreatments() {
-        return (List<Treatment>) treatmentRepository.findAll();
+        return treatmentRepository.findAll();
     }
 
     @Override
-    public Treatment updateTreatment(Long treatment_id, Treatment updated_treatment) {
-        Treatment existing_treatment = getTreatment(treatment_id)
-                .orElseThrow(() -> new RuntimeException("Treatment with id " + treatment_id + " not found"));
+    public Treatment updateTreatment(Long treatmentId, Treatment updatedTreatment) {
+        Treatment existingTreatment = getTreatment(treatmentId)
+                .orElseThrow(() -> new RuntimeException("Treatment with id " + treatmentId + " not found"));
 
         // Update name if a new name is provided
-        if (Objects.nonNull(updated_treatment.getName()) && !updated_treatment.getName().isEmpty()) {
-            existing_treatment.setName(updated_treatment.getName());
+        if (Objects.nonNull(updatedTreatment.getName()) && !updatedTreatment.getName().isEmpty()) {
+            existingTreatment.setName(updatedTreatment.getName());
         }
 
         // Update description if a new description is provided
-        if (Objects.nonNull(updated_treatment.getDescription()) && !updated_treatment.getDescription().isEmpty()) {
-            existing_treatment.setDescription(updated_treatment.getDescription());
+        if (Objects.nonNull(updatedTreatment.getDescription()) && !updatedTreatment.getDescription().isEmpty()) {
+            existingTreatment.setDescription(updatedTreatment.getDescription());
         }
 
-        // Update durations if a new list is provided
-//        if (Objects.nonNull(updated_treatment.getDurations()) && !updated_treatment.getDurations().isEmpty()) {
-//            // Clear existing durations and add updated ones
-//            existing_treatment.getDurations().clear();
-//            existing_treatment.getDurations().addAll(updated_treatment.getDurations());
-//
-//            // Ensure the bidirectional relationship is maintained, if applicable
-//            existing_treatment.getDurations().forEach(duration -> duration.setTreatment(existing_treatment));
-//        }
+        if (Objects.nonNull(updatedTreatment.getDurationsAndPrices()) && !updatedTreatment.getDurationsAndPrices().isEmpty()) {
+            existingTreatment.setDurationsAndPrices(updatedTreatment.getDurationsAndPrices());
+        }
 
-        return treatmentRepository.save(existing_treatment);
+        return treatmentRepository.save(existingTreatment);
     }
 
     @Override
-    public void deleteTreatment(Long treatment_id) {
-        if(treatmentRepository.existsById(treatment_id)) {
-            treatmentRepository.deleteById(treatment_id);
+    public void deleteTreatment(Long treatmentId) {
+        if(treatmentRepository.existsById(treatmentId)) {
+            treatmentRepository.deleteById(treatmentId);
         }
         else {
-            throw new RuntimeException("Treatment with id " + treatment_id + " not found");
+            throw new RuntimeException("Treatment with id " + treatmentId + " not found");
         }
     }
 }

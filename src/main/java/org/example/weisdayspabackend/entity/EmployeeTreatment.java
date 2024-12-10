@@ -1,23 +1,25 @@
 package org.example.weisdayspabackend.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.math.BigDecimal;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+public class EmployeeTreatment {
 
-public class TreatmentDuration {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long durationId;
-    private Integer duration; // in minutes
-    private BigDecimal price;
+    private Long employeeTreatmentId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn(name = "employeeId", nullable = false)
+    private Employee employee;
+
+    @ManyToOne
     @JoinColumn(name = "treatmentId", nullable = false)
     private Treatment treatment;
 }

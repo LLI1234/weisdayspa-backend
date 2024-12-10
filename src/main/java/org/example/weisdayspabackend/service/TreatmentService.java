@@ -6,8 +6,8 @@ import java.util.Optional;
 
 public interface TreatmentService {
     Treatment createTreatment(Treatment treatment);
-    Optional<Treatment> getTreatment(Long treatment_id);
+    Optional<Treatment> getTreatment(Long treatmentId);
     List<Treatment> getAllTreatments();
-    Treatment updateTreatment(Long treatment_id, Treatment updated_treatment);
-    void deleteTreatment(Long treatment_id);
+    Treatment updateTreatment(Long treatmentId, Treatment updated_treatment);
+    void deleteTreatment(Long treatmentId);
 }

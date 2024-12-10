@@ -24,8 +24,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Optional<Employee> findEmployee(Long employee_id) {
-        return employeeRepository.findById(employee_id);
+    public Optional<Employee> findEmployee(Long employeeId) {
+        return employeeRepository.findById(employeeId);
     }
 
     @Override
@@ -34,9 +34,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee updateEmployee(Long employee_id, Employee updated_employee) {
-        Employee existing_employee = findEmployee(employee_id)
-                .orElseThrow(() -> new RuntimeException("Employee with id " + employee_id + " not found"));
+    public Employee updateEmployee(Long employeeId, Employee updated_employee) {
+        Employee existing_employee = findEmployee(employeeId)
+                .orElseThrow(() -> new RuntimeException("Employee with id " + employeeId + " not found"));
 
         // Update first name if a new first name is provided
         if(Objects.nonNull(updated_employee.getFirst_name()) && !updated_employee.getFirst_name().isEmpty()) {
@@ -51,12 +51,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void deleteEmployee(Long employee_id) {
-        if(employeeRepository.existsById(employee_id)) {
-            employeeRepository.deleteById(employee_id);
+    public void deleteEmployee(Long employeeId) {
+        if(employeeRepository.existsById(employeeId)) {
+            employeeRepository.deleteById(employeeId);
         }
         else {
-            throw new RuntimeException("Employee with id " + employee_id + " not found");
+            throw new RuntimeException("Employee with id " + employeeId + " not found");
         }
     }
 }

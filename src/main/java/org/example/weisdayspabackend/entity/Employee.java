@@ -1,12 +1,11 @@
 package org.example.weisdayspabackend.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import java.util.List;
 
 @Entity
 @Data
@@ -15,8 +14,13 @@ import lombok.NoArgsConstructor;
 
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long employee_id;
+    @GeneratedValue
+    private Long employeeId;
     private String first_name;
     private String last_name;
+
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<EmployeeTreatment> employeeTreatments;
+//    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<Schedule> schedules;
 }
