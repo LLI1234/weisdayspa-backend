@@ -1,7 +1,7 @@
 package org.example.weisdayspabackend.service;
 
 import org.example.weisdayspabackend.entity.Employee;
-import org.example.weisdayspabackend.entity.EmployeeTreatment;
+import org.example.weisdayspabackend.entity.junctiontable.EmployeeTreatment;
 import org.example.weisdayspabackend.entity.Treatment;
 import org.example.weisdayspabackend.repository.EmployeeRepository;
 import org.example.weisdayspabackend.repository.EmployeeTreatmentRepository;
@@ -65,6 +65,7 @@ public class EmployeeTreatmentServiceImpl implements EmployeeTreatmentService {
     public void removeEmployeeFromTreatment(Long employeeId, Long treatmentId) {
         EmployeeTreatment employeeTreatment = employeeTreatmentRepository.findByEmployee_EmployeeId_AndTreatment_TreatmentId(employeeId, treatmentId)
                 .orElseThrow(() -> new RuntimeException("Employee-Treatment relation not found"));
+
         employeeTreatmentRepository.delete(employeeTreatment);
     }
 }

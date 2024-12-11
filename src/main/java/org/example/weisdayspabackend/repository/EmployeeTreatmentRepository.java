@@ -1,6 +1,6 @@
 package org.example.weisdayspabackend.repository;
 
-import org.example.weisdayspabackend.entity.EmployeeTreatment;
+import org.example.weisdayspabackend.entity.junctiontable.EmployeeTreatment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,11 +1,12 @@
 package org.example.weisdayspabackend.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.example.weisdayspabackend.entity.junctiontable.EmployeeTreatment;
+
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;

@@ -1,9 +1,11 @@
-package org.example.weisdayspabackend.entity;
+package org.example.weisdayspabackend.entity.junctiontable;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.example.weisdayspabackend.entity.Employee;
+import org.example.weisdayspabackend.entity.Treatment;
 
 @Entity
 @Data
@@ -12,7 +14,7 @@ import lombok.*;
 public class EmployeeTreatment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long employeeTreatmentId;
 
     @ManyToOne

@@ -1,11 +1,13 @@
 package org.example.weisdayspabackend.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.example.weisdayspabackend.entity.junctiontable.EmployeeSchedule;
+import org.example.weisdayspabackend.entity.junctiontable.EmployeeTreatment;
+
 import java.util.List;
 
 @Entity
@@ -23,6 +25,8 @@ public class Employee {
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<EmployeeTreatment> employeeTreatments;
-//    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<Schedule> schedules;
+
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private List<EmployeeSchedule> employeeSchedules;
 }
