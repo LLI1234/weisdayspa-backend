@@ -1,5 +1,6 @@
 package org.example.weisdayspabackend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -29,5 +30,6 @@ public class Treatment {
     private Map<Integer, BigDecimal> durationsAndPrices;
 
     @OneToMany(mappedBy = "treatment", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<EmployeeTreatment> employeeTreatments;
 }

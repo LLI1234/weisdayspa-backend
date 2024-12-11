@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class EmployeeTreatmentServiceImpl implements EmployeeTreatmentService {
@@ -44,14 +45,21 @@ public class EmployeeTreatmentServiceImpl implements EmployeeTreatmentService {
 
 
     @Override
-    public List<EmployeeTreatment> getEmployeesByTreatment(Long treatmentId) {
-        return employeeTreatmentRepository.findByTreatment_TreatmentId(treatmentId);
+    public List<Employee> getEmployeesByTreatment(Long treatmentId) {
+        List<EmployeeTreatment> employeeTreatments = employeeTreatmentRepository.findByTreatment_TreatmentId(treatmentId);
+        return employeeTreatments.stream()
+                .map(EmployeeTreatment::getEmployee) // Extract the Employee from each EmployeeTreatment
+                .collect(Collectors.toList()); // Collect as a List<Treatment>
     }
 
     @Override
-    public List<EmployeeTreatment> getTreatmentsByEmployee(Long employeeId) {
-        return employeeTreatmentRepository.findByEmployee_EmployeeId(employeeId);
+    public List<Treatment> getTreatmentsByEmployee(Long employeeId) {
+        List<EmployeeTreatment> employeeTreatments = employeeTreatmentRepository.findByEmployee_EmployeeId(employeeId);
+        return employeeTreatments.stream()
+                .map(EmployeeTreatment::getTreatment) // Extract the Treatment from each EmployeeTreatment
+                .collect(Collectors.toList()); // Collect as a List<Treatment>
     }
+
 
     @Override
     public void removeEmployeeFromTreatment(Long employeeId, Long treatmentId) {
