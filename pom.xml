@@ -36,6 +36,15 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
@@ -61,12 +70,47 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>0.11.5</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>0.11.5</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>0.11.5</version>
+            <scope>runtime</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -77,15 +121,14 @@
                             <artifactId>lombok</artifactId>
                         </path>
                     </annotationProcessorPaths>
-                    <source>17</source> <!-- Use your project's Java version -->
+                    <source>17</source>
                     <target>17</target>
                 </configuration>
             </plugin>
-
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 
