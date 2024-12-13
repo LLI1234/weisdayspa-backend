@@ -40,11 +40,19 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         final String jwt;
         final String userEmail;
         if(authHeader == null || !authHeader.startsWith("Bearer ")) {
+            System.out.println("I HAVE NOTING");
+
             filterChain.doFilter(request, response);
             return;
         }
         jwt = authHeader.substring(7);
         userEmail = jwtService.extractUsername(jwt);
+
+        System.out.println("Auth Header: " + authHeader);
+        System.out.println("Extracted JWT: " + jwt);
+        System.out.println("Extracted userEmail: " + userEmail);
+        System.out.println("Authentication context before filter: " + SecurityContextHolder.getContext().getAuthentication());
+
         if(userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
             if(jwtService.isTokenValid(jwt, userDetails)) {
