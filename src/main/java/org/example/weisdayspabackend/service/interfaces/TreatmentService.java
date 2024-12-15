@@ -1,4 +1,4 @@
-package org.example.weisdayspabackend.service;
+package org.example.weisdayspabackend.service.interfaces;
 
 import org.example.weisdayspabackend.entity.Treatment;
 import java.util.List;

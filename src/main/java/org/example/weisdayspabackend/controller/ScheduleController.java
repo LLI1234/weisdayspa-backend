@@ -1,7 +1,7 @@
 package org.example.weisdayspabackend.controller;
 
 import org.example.weisdayspabackend.entity.Schedule;
-import org.example.weisdayspabackend.service.ScheduleService;
+import org.example.weisdayspabackend.service.interfaces.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

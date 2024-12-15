@@ -1,4 +1,4 @@
-package org.example.weisdayspabackend.service;
+package org.example.weisdayspabackend.service.implementations;
 
 import org.example.weisdayspabackend.entity.Employee;
 import org.example.weisdayspabackend.entity.junctiontable.EmployeeTreatment;
@@ -6,6 +6,7 @@ import org.example.weisdayspabackend.entity.Treatment;
 import org.example.weisdayspabackend.repository.EmployeeRepository;
 import org.example.weisdayspabackend.repository.EmployeeTreatmentRepository;
 import org.example.weisdayspabackend.repository.TreatmentRepository;
+import org.example.weisdayspabackend.service.interfaces.EmployeeTreatmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,11 @@ public class EmployeeTreatmentServiceImpl implements EmployeeTreatmentService {
     private final TreatmentRepository treatmentRepository;
 
     @Autowired
-    public EmployeeTreatmentServiceImpl(EmployeeTreatmentRepository employeeTreatmentRepository, EmployeeRepository employeeRepository, TreatmentRepository treatmentRepository) {
+    public EmployeeTreatmentServiceImpl(
+            EmployeeTreatmentRepository employeeTreatmentRepository,
+            EmployeeRepository employeeRepository,
+            TreatmentRepository treatmentRepository
+    ) {
         this.employeeTreatmentRepository = employeeTreatmentRepository;
         this.employeeRepository = employeeRepository;
         this.treatmentRepository = treatmentRepository;

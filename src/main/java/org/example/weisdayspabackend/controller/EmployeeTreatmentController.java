@@ -3,7 +3,7 @@ package org.example.weisdayspabackend.controller;
 import org.example.weisdayspabackend.entity.Employee;
 import org.example.weisdayspabackend.entity.junctiontable.EmployeeTreatment;
 import org.example.weisdayspabackend.entity.Treatment;
-import org.example.weisdayspabackend.service.EmployeeTreatmentService;
+import org.example.weisdayspabackend.service.interfaces.EmployeeTreatmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,8 +45,8 @@ public class EmployeeTreatmentController {
     }
 
     // Remove a treatment from an employee
-    @DeleteMapping
-    public ResponseEntity<Void> removeEmployeeFromTreatment(@RequestParam Long employeeId, @RequestParam Long treatmentId) {
+    @DeleteMapping("/employees/{employeeId}/treatments/{treatmentId}")
+    public ResponseEntity<Void> removeEmployeeFromTreatment(@PathVariable Long employeeId, @PathVariable Long treatmentId) {
         employeeTreatmentService.removeEmployeeFromTreatment(employeeId, treatmentId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

@@ -1,7 +1,7 @@
 package org.example.weisdayspabackend.controller;
 
 import org.example.weisdayspabackend.entity.Employee;
-import org.example.weisdayspabackend.service.EmployeeService;
+import org.example.weisdayspabackend.service.interfaces.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

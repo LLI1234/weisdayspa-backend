@@ -1,7 +1,8 @@
-package org.example.weisdayspabackend.service;
+package org.example.weisdayspabackend.service.implementations;
 
 import org.example.weisdayspabackend.entity.Schedule;
 import org.example.weisdayspabackend.repository.ScheduleRepository;
+import org.example.weisdayspabackend.service.interfaces.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

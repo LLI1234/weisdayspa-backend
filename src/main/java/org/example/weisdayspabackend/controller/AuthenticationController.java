@@ -1,10 +1,9 @@
 package org.example.weisdayspabackend.controller;
 
-import lombok.RequiredArgsConstructor;
 import org.example.weisdayspabackend.auth.AuthenticationRequest;
 import org.example.weisdayspabackend.auth.AuthenticationResponse;
 import org.example.weisdayspabackend.auth.RegisterRequest;
-import org.example.weisdayspabackend.service.AuthenticationService;
+import org.example.weisdayspabackend.service.implementations.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

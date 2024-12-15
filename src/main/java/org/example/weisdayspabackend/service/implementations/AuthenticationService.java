@@ -1,12 +1,11 @@
-package org.example.weisdayspabackend.service;
+package org.example.weisdayspabackend.service.implementations;
 
-import lombok.RequiredArgsConstructor;
 import org.example.weisdayspabackend.auth.AuthenticationRequest;
 import org.example.weisdayspabackend.auth.AuthenticationResponse;
 import org.example.weisdayspabackend.auth.RegisterRequest;
 import org.example.weisdayspabackend.entity.User;
 import org.example.weisdayspabackend.repository.UserRepository;
-import org.example.weisdayspabackend.role.Role;
+import org.example.weisdayspabackend.enumerator.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

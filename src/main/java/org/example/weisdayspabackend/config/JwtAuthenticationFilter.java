@@ -4,8 +4,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.RequiredArgsConstructor;
-import org.example.weisdayspabackend.service.JwtService;
+import org.example.weisdayspabackend.service.implementations.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -40,18 +39,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         final String jwt;
         final String userEmail;
         if(authHeader == null || !authHeader.startsWith("Bearer ")) {
-            System.out.println("I HAVE NOTING");
-
             filterChain.doFilter(request, response);
             return;
         }
         jwt = authHeader.substring(7);
         userEmail = jwtService.extractUsername(jwt);
-
-        System.out.println("Auth Header: " + authHeader);
-        System.out.println("Extracted JWT: " + jwt);
-        System.out.println("Extracted userEmail: " + userEmail);
-        System.out.println("Authentication context before filter: " + SecurityContextHolder.getContext().getAuthentication());
 
         if(userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);

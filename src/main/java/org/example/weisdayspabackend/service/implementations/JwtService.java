@@ -1,4 +1,4 @@
-package org.example.weisdayspabackend.service;
+package org.example.weisdayspabackend.service.implementations;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

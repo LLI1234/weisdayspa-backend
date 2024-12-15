@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.example.weisdayspabackend.entity.junctiontable.AppointmentTreatment;
 import org.example.weisdayspabackend.entity.junctiontable.EmployeeTreatment;
 
 import java.math.BigDecimal;
@@ -33,4 +34,8 @@ public class Treatment {
     @OneToMany(mappedBy = "treatment", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<EmployeeTreatment> employeeTreatments;
+
+    @OneToMany(mappedBy = "treatment", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private List<AppointmentTreatment> appointmentTreatments;
 }

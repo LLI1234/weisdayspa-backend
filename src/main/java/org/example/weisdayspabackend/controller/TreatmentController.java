@@ -1,7 +1,7 @@
 package org.example.weisdayspabackend.controller;
 
 import org.example.weisdayspabackend.entity.Treatment;
-import org.example.weisdayspabackend.service.TreatmentService;
+import org.example.weisdayspabackend.service.interfaces.TreatmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +27,7 @@ public class TreatmentController {
     }
 
     @GetMapping("/{treatment_id}")
-    public ResponseEntity<Treatment> getTreatments(@PathVariable Long treatment_id) {
+    public ResponseEntity<Treatment> getTreatment(@PathVariable Long treatment_id) {
         return treatment_service.getTreatment(treatment_id)
                 .map(treatment -> new ResponseEntity<>(treatment, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));

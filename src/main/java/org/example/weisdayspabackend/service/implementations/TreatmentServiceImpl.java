@@ -1,7 +1,8 @@
-package org.example.weisdayspabackend.service;
+package org.example.weisdayspabackend.service.implementations;
 
 import org.example.weisdayspabackend.entity.Treatment;
 import org.example.weisdayspabackend.repository.TreatmentRepository;
+import org.example.weisdayspabackend.service.interfaces.TreatmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;

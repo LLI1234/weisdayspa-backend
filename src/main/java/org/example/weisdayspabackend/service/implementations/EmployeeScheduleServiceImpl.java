@@ -1,4 +1,4 @@
-package org.example.weisdayspabackend.service;
+package org.example.weisdayspabackend.service.implementations;
 
 import org.example.weisdayspabackend.entity.Employee;
 import org.example.weisdayspabackend.entity.Schedule;
@@ -6,6 +6,7 @@ import org.example.weisdayspabackend.entity.junctiontable.EmployeeSchedule;
 import org.example.weisdayspabackend.repository.EmployeeRepository;
 import org.example.weisdayspabackend.repository.EmployeeScheduleRepository;
 import org.example.weisdayspabackend.repository.ScheduleRepository;
+import org.example.weisdayspabackend.service.interfaces.EmployeeScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
