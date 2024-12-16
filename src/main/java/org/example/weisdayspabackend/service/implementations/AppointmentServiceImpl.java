@@ -27,12 +27,12 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public Optional<Appointment> getAppointment(Long appointmentId) {
+    public Optional<Appointment> findAppointment(Long appointmentId) {
         return appointmentRepository.findById(appointmentId);
     }
 
     @Override
-    public List<Appointment> getAllAppointments() {
+    public List<Appointment> findAllAppointments() {
         return appointmentRepository.findAll();
     }
 
@@ -43,7 +43,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public Appointment updateAppointment(Long appointmentId, Appointment updatedAppointment) {
-        Appointment existingAppointment = getAppointment(appointmentId)
+        Appointment existingAppointment = findAppointment(appointmentId)
                 .orElseThrow(() -> new RuntimeException("Appointment with id " + appointmentId + " not found"));
 
         if(Objects.nonNull(updatedAppointment.getDate())) {

@@ -27,18 +27,18 @@ public class AppointmentController {
     }
 
     @GetMapping("/{appointmentId}")
-    public ResponseEntity<Appointment> getAppointment(@PathVariable Long appointmentId) {
-        return appointmentService.getAppointment(appointmentId)
+    public ResponseEntity<Appointment> findAppointment(@PathVariable Long appointmentId) {
+        return appointmentService.findAppointment(appointmentId)
                 .map(appointment -> new ResponseEntity<>(appointment, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @GetMapping
-    public ResponseEntity<List<Appointment>> getAllAppointments() {
-        return new ResponseEntity<>(appointmentService.getAllAppointments(), HttpStatus.OK);
+    public ResponseEntity<List<Appointment>> findAllAppointments() {
+        return new ResponseEntity<>(appointmentService.findAllAppointments(), HttpStatus.OK);
     }
 
-    @GetMapping
+    @GetMapping("/date")
     public ResponseEntity<List<Appointment>> getDailyAppointment(@RequestBody LocalDate date) {
         return new ResponseEntity<>(appointmentService.getDailyAppointment(date), HttpStatus.OK);
     }

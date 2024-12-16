@@ -8,8 +8,8 @@ import java.util.Optional;
 
 public interface AppointmentService {
     Appointment createAppointment(Appointment appointment);
-    Optional<Appointment> getAppointment(Long appointmentId);
-    List<Appointment> getAllAppointments();
+    Optional<Appointment> findAppointment(Long appointmentId);
+    List<Appointment> findAllAppointments();
     List<Appointment> getDailyAppointment(LocalDate date);
     Appointment updateAppointment(Long appointmentId, Appointment updatedAppointment);
     void deleteAppointment(Long appointmentId);
